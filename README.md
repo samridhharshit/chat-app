@@ -1,4 +1,4 @@
-# QuickHash Assignment
+# Chat App
 
 ## Synopsis
 
