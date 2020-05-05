@@ -15,7 +15,7 @@ Chat app where user can send messages to fellow users. could send private messag
  ![chat-app](https://user-images.githubusercontent.com/39849261/81068130-7cce8200-8efd-11ea-85f7-a799ec3b980c.gif)
  
  ### How to run this app
- 1. run `git clone https://github.com/samridhharshit/QuickHash-Assignment.git`
+ 1. run `git clone https://github.com/samridhharshit/chat-app.git`
  2. Go to the project directory and run `npm install`
  3. run `npm run dev`
  
