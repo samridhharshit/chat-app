@@ -56,7 +56,7 @@ io.on('connection', (socket) => {
         if (deliverTo !== "") {
             const index = myClientList.findIndex(client => client.name === deliverTo);
             // console.log(index)
-            socket.join(myClientList[index].id);
+            // socket.join(myClientList[index].id);
             io.sockets.to(myClientList[index].id).emit('messageOut', {dataToShow})
         } else {
             io.emit("messageOut", dataToShow)
