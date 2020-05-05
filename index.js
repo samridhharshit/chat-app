@@ -52,10 +52,10 @@ io.on('connection', (socket) => {
             msg: arr.join(" ")
         };
         // console.log(dataToShow, "line 54", deliverTo)
+        const index = myClientList.findIndex(client => client.name === deliverTo);
+        // console.log(index)
+        socket.join(myClientList[index].id);
         if (deliverTo !== "") {
-            const index = myClientList.findIndex(client => client.name === deliverTo);
-            // console.log(index)
-            socket.join(myClientList[index].id);
             io.sockets.to(myClientList[index].id).emit('messageOut', {dataToShow})
         } else {
             io.emit("messageOut", dataToShow)
