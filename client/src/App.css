@@ -1,0 +1,90 @@
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: antiquewhite;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.login-container-row {
+  max-width: 700px;
+  height: max-content;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.login-container {
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 1rem;
+  margin: 2rem;
+  border: 1px dashed black;
+}
+
+form {
+  display: inline-grid;
+}
+
+input {
+  margin: 1rem;
+  padding: 0.5rem;
+  text-decoration: none;
+  list-style: none;
+  background: transparent;
+  border: 1px solid #007BFF;
+  border-radius: 3px;
+  transition: 0.5s;
+  outline: none;
+}
+
+input:hover {
+  border: 1px solid red;
+}
+
+
+/* Chat Room CSS */
+
+.chat-row {
+  margin-top: 8rem;
+}
+
+.chat {
+  display: grid;
+}
+
+.chat-container {
+  height: max-content;
+  outline: none;
+  background: transparent;
+  border-radius: 5px;
+  border: 1px solid #17a2b8;
+  overflow: auto;
+  resize: vertical;
+}
