@@ -20,7 +20,7 @@ const io = socketIO(server);
 let myClientList = [];
 
 io.on('connection', (socket) => {
-    // console.info(`Client connected [id=${socket.id}]`);
+    console.info(`Client connected [id=${socket.id}]`);
 
     socket.on('addId', data => {
         for (var i = 0; i < myClientList.length; i++) {
@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
             }
         }
         myClientList.push(data);
-        // console.log(myClientList)
+        console.log(myClientList)
     });
 
     // receive msg
@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
             if (index !== -1) {
                 io.sockets.to(myClientList[index].id).emit('messageOut', {dataToShow})
             } else {
-                io.emit("messageOut", dataToShow)
+                io.emit("userNotFound")
             }
         } else {
             // console.log(index)
@@ -68,11 +68,20 @@ io.on('connection', (socket) => {
 
     });
 
+    //manual-disconnect
+    socket.on('manual-disconnect', () => {
+        // console.log('disconnecting');
+        socket.emit('disconnect');
+        console.log("disconnected");
+        console.log(myClientList)
+    });
+
     // disconnect user
     socket.on("disconnect", () => {
+        // console.log(id);
         myClientList = myClientList.filter(obj => obj.id !== socket.id);
-        // console.log('disconnected');
-        // console.log(myClientList)
+        console.log('disconnected');
+        console.log(myClientList)
     });
 
 });

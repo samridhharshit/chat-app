@@ -3,30 +3,32 @@ import React from "react";
 import Button from "reactstrap/lib/Button";
 
 let socket = require("socket.io-client")("http://localhost:5000");
-
+let n = "";
 export default class ChatRoom extends React.Component {
 
     state = {
         messageToSend: "",
-        messageReceived: {}
+        messageReceived: {},
+        socket: null
     };
 
     componentDidMount() {
         // console.log(this.props.match.params.username);
 
-        socket.onopen = () => {
-            socket.send('Hello, Client is connected!!')
-        };
-
-        const n = this.props.match.params.username;
-        socket.on('connect', function() {
-            const obj = {
-                name: n,
-                id: socket.id
-            };
-            socket.emit('addId', obj);
-            // console.log(socket.id);
+        socket.on('connect', async function() {
+            await console.log(socket.id);
         });
+
+        n = this.props.match.params.username;
+        const obj = {
+            name: n,
+            id: socket.id
+        };
+        socket.emit('addId', obj);
+    }
+
+    componentWillUnmount() {
+        socket.emit('manual-disconnect', socket.id)
     }
 
     sendMessage = (e) => {
